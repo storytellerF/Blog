@@ -2,7 +2,7 @@
 
 > 本人所有文章禁止任何形式的转载，谢谢
 
-# 前言
+## 前言
 
 在一个app 中，UI 通常会给出不同的设计，比如Ok 按钮和Cancel 的样式是不太一样的，每出现一个新的样式，我们就需要创建一个drawable 文件。这都还好，关键是这个drawable 文件有相当多的重复性内容，也就是说完全没有重用。像style 文件还好，不同的style 之间还可以继承。
 
@@ -53,7 +53,9 @@
         id 'maven-publish'
     }
     ```
+
     因为代码不是在buildSrc 中，所以要应该这个插件，需要通过maven publish
+
     ```kotlin
     gradlePlugin {
         plugins {
@@ -77,6 +79,7 @@
         }
     }
     ```
+
 2. 定义一个任务
 
     ```kotlin
@@ -108,6 +111,7 @@
     代码并不是必须要这么写，只要逻辑没问题应该就好，更多内容可以查看gradle doc的 [working_with_files_in_custom_tasks_and_plugins](https://docs.gradle.org/current/userguide/custom_plugins.html#sec:working_with_files_in_custom_tasks_and_plugins)
 
 3. 定义一个Plugin
+
     ```kotlin
 
     class Sml : Plugin<Project> {
@@ -139,7 +143,7 @@
     生成的文件中仅包含color，其他的资源照猫画虎就可以全部做出来。
 
 4. 接受参数
-    
+
     上面的例子中，参数是通过`it.colorsMap = mutableMapOf()` 指定的，因为我们的插件需要提供给不同的模块使用，现阶段不太灵活。
 
     ```kotlin
@@ -298,5 +302,3 @@
 可能Google 的开发人员认为这个是自动生成的，所以你应该对于生成出来的内容拥有绝对的认知吧。
 
 最优先的的选择应该还是jetpack compose，但是如果因为某些原因而不能，那么“SML” 应该是最好的选择了吧😊
-
-
